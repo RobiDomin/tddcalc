@@ -9,10 +9,10 @@ public class CalculatorTest {
         Calculator calculator = new Calculator(); // Klasa jeszcze nie istnieje
 
         // Act
-        int result = calculator.add(2, 3); //"2+3=5"
+        double result = calculator.add(2, 3);
 
         // Assert
-        assertEquals(5, result);
+        assertEquals(5, result, "2+3=5");
     }
     @Test
     public void shouldReturnSubOfTwoNumbers() {
@@ -20,10 +20,10 @@ public class CalculatorTest {
         Calculator calculator = new Calculator(); // Klasa jeszcze nie istnieje
 
         // Act
-        int result = calculator.substract(4, 3); //"4-3=1"
+        double result = calculator.substract(4, 3);
 
         // Assert
-        assertEquals(1, result);
+        assertEquals(1, result, "4-3=1");
     }
     @Test
     public void shouldReturnMulOfTwoNumbers() {
@@ -31,10 +31,10 @@ public class CalculatorTest {
         Calculator calculator = new Calculator(); // Klasa jeszcze nie istnieje
 
         // Act
-        int result = calculator.multiply(4, 3); //"4*3=12"
+        double result = calculator.multiply(4, 3);
 
         // Assert
-        assertEquals(12, result);
+        assertEquals(12, result, "4*3=12");
     }
     @Test
     public void shouldReturnDivOfTwoNumbers() {
@@ -42,9 +42,18 @@ public class CalculatorTest {
         Calculator calculator = new Calculator(); // Klasa jeszcze nie istnieje
 
         // Act
-        int result = calculator.divide(10, 5); //"10/5=2"
+        double result = calculator.divide(10, 5);
 
         // Assert
-        assertEquals(2, result);
+        assertEquals(2, result, "10/5=2");
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenDividingByZero() {
+        // Arrange
+        Calculator calculator = new Calculator();
+
+        // Act & Assert
+        assertThrows(ArithmeticException.class, () -> calculator.divide(10, 0), "Division by zero should throw ArithmeticException");
     }
 }
